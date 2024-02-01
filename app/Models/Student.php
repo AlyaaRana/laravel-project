@@ -11,9 +11,17 @@ class Student extends Model
     protected $fillable = [
         'nis',
         'nama',
-        'kelas',
+        'kelas_id',
         'tanggal_lahir',
         'alamat',
         // Add other fields as needed
     ];
+
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class);
+    }
+
+
+
 }

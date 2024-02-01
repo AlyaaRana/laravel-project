@@ -7,10 +7,9 @@
 <form action="/students/update/{{ $student->id }}" method="POST" id="edit-form">
     @csrf
     @method('PUT')
-    <!-- Tambahkan input fields untuk mengedit data siswa, contoh: -->
     <div class="form-group">
         <label for="nis">NIS:</label>
-        <input type="text" name="nis" id="nis" value="{{ $student->nis }}" class="form-control">
+        <input type="text" name="nis" id="nis" value="{{ $student->nis }}" class="form-control" readonly >
     </div>
 
     <div class="form-group">
@@ -20,8 +19,15 @@
 
     <div class="form-group">
         <label for="kelas">Kelas:</label>
-        <input type="text" name="kelas" id="kelas" value="{{ $student->kelas }}" class="form-control">
+        <select class="form-select" name="kelas_id" id="">
+            @foreach($kelas as $kelasItem)
+                <option value="{{ $kelasItem->id }}" {{ $student->kelas_id == $kelasItem->id ? 'selected' : '' }}>
+                    {{ $kelasItem->nama }}
+                </option>
+            @endforeach
+        </select>
     </div>
+    
 
     <div class="form-group">
         <label for="kelas">Alamat:</label>
@@ -30,10 +36,8 @@
 
     <div class="form-group">
         <label for="kelas">Tanggal Lahir:</label>
-        <input type="date" name="tanggal" id="tanggal" value="{{ $student->tanggal }}" class="form-control">
+        <input type="date" name="tanggal" id="tanggal" value="{{ $student->tanggal_lahir }}" class="form-control">
     </div>
-
-    <!-- Tambahkan input fields untuk mengedit data lainnya -->
 
     <button type="button" class="btn btn-primary" onclick="confirmEdit()">Simpan Perubahan</button>
 </form>

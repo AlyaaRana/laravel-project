@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kelas;
 use Illuminate\Http\Request;
 use App\Models\Student;
 
@@ -25,11 +26,16 @@ class StudentsController extends Controller
 
     public function edit($student)
     {
+        
+        $kelas = Kelas::all();
+
         return view('student.edit',[
             "title" => "edit-student",
-            "student" => Student::find($student)
+            "student" => Student::find($student),
+            'kelas' => $kelas,
         ]);
     }
+
 
     public function update(Request $request, $student)
     {
@@ -39,15 +45,13 @@ class StudentsController extends Controller
         $student->update([
             'nis' => $request->nis,
             'nama' => $request->nama,
-            'kelas' => $request->kelas,
+            'kelas_id' => $request->kelas_id,
             'alamat' => $request->alamat,
             'tanggal' => $request->tanggal,
         ]);
 
         return redirect('/students/all')->with('success', 'Data produk berhasil diperbarui.');
-    } else {
-        return redirect('/students/all')->with('error', 'Produk tidak ditemukan.');
-    }
+        }
     }
     
     
@@ -68,28 +72,33 @@ class StudentsController extends Controller
         return view('student.create', [
             'title' => 'Add Student',
             'student' => new Student(), 
+            'kelas' => Kelas::all()
         ]);
     }
 
-    public function add(Request $request)
+    public function store(Request $request)
     {
         $validatedData = $request->validate([
             'nis' => 'required',
             'nama' => 'required',
-            'kelas' => 'required',
+            'kelas_id' => 'required',
             'tanggal' => 'required',
             'alamat' => 'required',
         ]);
+
+        // $result = Student::create($validatedData);
     
         $student = new Student(); 
         $student->nis = $validatedData['nis'];
         $student->nama = $validatedData['nama'];
-        $student->kelas = $validatedData['kelas'];
+        $student->kelas_id = $validatedData['kelas_id'];
         $student->tanggal_lahir = $validatedData['tanggal'];
         $student->alamat = $validatedData['alamat'];
     
         $student->save();
-    
-        return redirect('/students/all')->with('success', 'Student added successfully');
+        return redirect('/students/all')->with('success', 'Data siswa berhasil ditambahkan.');
+        // if ($result) {
+        //     return redirect('/students/all')->with('success', 'Data siswa berhasil ditambahkan.');
+        // }
     }
 }
