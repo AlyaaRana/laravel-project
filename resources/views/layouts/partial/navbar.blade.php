@@ -21,15 +21,15 @@
             </div>
           </div>
           @guest
-    <span class="navbar-text">
-        <a class="nav-link active" aria-current="page" href="/login/index">Login</a>
-    </span>
-    @else
-        <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+          <span class="navbar-text">
+          <a class="nav-link active" aria-current="page" href="/login/index">Login</a>
+          </span>
+          @else
+          <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
             Hi, {{ Auth::user()->name }}
-        </button>
-        <ul class="dropdown-menu">
+          </button>
+          <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>
             <li>
                 <form action="{{ route('logout') }}" method="post">
@@ -38,10 +38,9 @@
                     <button type="submit" class="dropdown-item">Logout</button>
                 </form>
             </li>
-        </ul>
-       </div>
-    @endguest
-
+          </ul>
+          </div>
+        @endguest
         </div>
       </nav>
 </body>
