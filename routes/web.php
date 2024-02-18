@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Students;
 use App\Http\Controllers\StudentsController;
@@ -62,3 +64,12 @@ Route::put('/kelas/update/{kelas}', [KelasController::class, 'update']);
 Route::delete('/kelas/delete/{kelas}', [KelasController::class, 'destroy']);
 Route::get('/kelas/create', [KelasController::class, 'create']);
 Route::post('/kelas/store', [KelasController::class, 'store']);
+
+Route::get('/login/index', [LoginController::class, 'index']);
+Route::post('/login/store', [LoginController::class, 'store']);
+
+Route::get('/register/index', [RegisterController::class, 'index']);
+Route::post('/register/store', [RegisterController::class, 'store']);
+
+Route::delete('/logout', [LoginController::class, 'logout'])->name('logout');
+
