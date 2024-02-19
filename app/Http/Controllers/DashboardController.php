@@ -17,9 +17,12 @@ class DashboardController extends Controller
 
     public function student()
     { 
+        $kelas = Kelas::all();
+        $students = Student::with('kelas')->paginate(5);
         return view('dashboard.student', [
             "title" => "student",
-            "students" => Student::all()
+            "students" => $students,
+            'kelas' => $kelas,
         ]);
     }
 

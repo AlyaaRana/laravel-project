@@ -32,7 +32,7 @@ class KelasController extends Controller
             'nama' => $request->nama,
         ]);
 
-        return redirect('/kelas/all')->with('success', 'Data kelas berhasil diperbarui.');
+        return redirect('/dashboard/kelas')->with('success', 'Data kelas berhasil diperbarui.');
         }
     }
 
@@ -41,9 +41,9 @@ class KelasController extends Controller
         $kelas = Kelas::find($kelas);
         if ($kelas) {
         $kelas->delete();
-        return redirect('/kelas/all')->with('success', 'Data kelas berhasil dihapus.');
+        return redirect('/dashboard/kelas')->with('success', 'Data kelas berhasil dihapus.');
         } else {
-        return redirect('/kelas/all')->with('error', 'Kelas tidak ditemukan.');
+        return redirect('/dashboard/kelas')->with('error', 'Kelas tidak ditemukan.');
         }
     }
 
@@ -61,15 +61,11 @@ class KelasController extends Controller
             'nama' => 'required',
         ]);
 
-        // $result = Student::create($validatedData);
     
         $kelas = new Kelas(); 
         $kelas->nama = $validatedData['nama'];
     
         $kelas->save();
-        return redirect('/kelas/all')->with('success', 'Data kelas berhasil ditambahkan.');
-        // if ($result) {
-        //     return redirect('/students/all')->with('success', 'Data siswa berhasil ditambahkan.');
-        // }
+        return redirect('/dashboard/kelas')->with('success', 'Data kelas berhasil ditambahkan.');
     }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-@endif
+
 <h1>Ini adalah halaman student</h1>
 <table class="table">
   <thead class="table-light">

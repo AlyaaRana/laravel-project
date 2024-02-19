@@ -10,10 +10,10 @@ class StudentsController extends Controller
 {
     public function index()
     {
-        $students = Student::with('kelas')->paginate(7);
+        
         return view('student.all', [
             "title" => "student_page",
-            "students" => $students
+            "students" => Student::all()
         ]);
     }
 
@@ -56,15 +56,12 @@ class StudentsController extends Controller
         }
     }
     
-    
-    
+
     public function destroy(Student $student)
     {
-    $student->delete();
-    return redirect('/dashboard/student')->with('success', 'Student deleted successfully');
+       $student->delete();
+       return redirect('/dashboard/student')->with('success', 'Student deleted successfully');
     }
-  
-
 
     public function create()
     {
@@ -85,7 +82,6 @@ class StudentsController extends Controller
             'alamat' => 'required',
         ]);
 
-        // $result = Student::create($validatedData);
     
         $student = new Student(); 
         $student->nis = $validatedData['nis'];
@@ -96,8 +92,6 @@ class StudentsController extends Controller
     
         $student->save();
         return redirect('/dashboard/student')->with('success', 'Data siswa berhasil ditambahkan.');
-        // if ($result) {
-        //     return redirect('/students/all')->with('success', 'Data siswa berhasil ditambahkan.');
-        // }
+
     }
 }

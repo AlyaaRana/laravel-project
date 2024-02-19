@@ -1,11 +1,8 @@
-@extends('layouts.main')
+@extends('dashboard.all')
 
-@section('container')
+@section('content')
 <!DOCTYPE html>
 <html>
-<head>
-    <!-- Elemen head lainnya -->
-</head>
 <body>
     <h1>Konfirmasi Penghapusan</h1>
     <p>Anda yakin ingin menghapus data siswa ini?</p>

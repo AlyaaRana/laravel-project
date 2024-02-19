@@ -71,14 +71,12 @@ Route::post('/kelas/store', [KelasController::class, 'store']);
 
 Route::get('/login/index', [LoginController::class, 'index']);
 Route::post('/login/store', [LoginController::class, 'store']);
+Route::delete('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/register/index', [RegisterController::class, 'index']);
 Route::post('/register/store', [RegisterController::class, 'store']);
 
-Route::delete('/logout', [LoginController::class, 'logout'])->name('logout');
-
 Route::get('/dashboard/all', [DashboardController::class, 'index'])->middleware(['auth']);
-
 Route::get('/dashboard/student', [DashboardController::class, 'student']);
 Route::get('/dashboard/kelas', [DashboardController::class, 'kelas']);
 
