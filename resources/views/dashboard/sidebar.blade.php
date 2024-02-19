@@ -27,8 +27,7 @@
               <button class="nav-link d-flex align-items-center gap-2" href="#">
                 <svg class="bi"><use xlink:href="#door-closed"/></svg>
                 Sign out
-              </button>
-            
+              </button> 
           </li>
         </ul>
       </div>

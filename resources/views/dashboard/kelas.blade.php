@@ -2,7 +2,7 @@
 
 @section('content')
 <h4 class="mt-4">Kelas</h4>
-{{-- <a href="/kelas/create" class="btn btn-success">Add Kelas</a> --}}
+<a href="/kelas/create" class="btn btn-success mb-3">Add Kelas</a>
 <table class="table">
   <thead class="table-light">
     <tr>

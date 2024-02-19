@@ -32,6 +32,6 @@ class LoginController extends Controller
     {
         auth()->logout();
 
-        return redirect('/login/index');
+        return redirect('/home');
     }
 }

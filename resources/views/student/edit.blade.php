@@ -1,8 +1,8 @@
 @extends('layouts.main')
 
-@section('container')
+@section('content')
 <h1>Edit Data Siswa</h1>
-<a href="/students/all">Kembali</a>
+<a href="/dashboard/student">Kembali</a>
 
 <form action="/students/update/{{ $student->id }}" method="POST" id="edit-form">
     @csrf

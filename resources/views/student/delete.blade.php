@@ -18,7 +18,7 @@
         }
 
         function batal() {
-            window.location.href = '/students/all';
+            window.location.href = '/dashboard/student';
         }
     </script>
 </body>

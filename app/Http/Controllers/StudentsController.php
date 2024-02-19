@@ -9,12 +9,14 @@ use App\Models\Student;
 class StudentsController extends Controller
 {
     public function index()
-    { 
+    {
+        $students = Student::with('kelas')->paginate(7);
         return view('student.all', [
-            "title" => "student",
-            "students" => Student::all()
+            "title" => "student_page",
+            "students" => $students
         ]);
     }
+
 
     public function show($student)
     {
@@ -56,16 +58,13 @@ class StudentsController extends Controller
     
     
     
-    public function destroy($student)
+    public function destroy(Student $student)
     {
-        $student = Student::find($student);
-        if ($student) {
-        $student->delete();
-        return redirect('/dashboard/student')->with('success', 'Data siswa berhasil dihapus.');
-        } else {
-        return redirect('/dashboard/student')->with('error', 'Siswa tidak ditemukan.');
-        }
+    $student->delete();
+    return redirect('/dashboard/student')->with('success', 'Student deleted successfully');
     }
+  
+
 
     public function create()
     {
