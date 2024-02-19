@@ -7,9 +7,9 @@
 </div>
 @endif
 <h1>Ini adalah halaman student</h1>
-<a href="/students/create" class="btn btn-success">Add Student</a>
+{{-- <a href="/students/create" class="btn btn-success">Add Student</a> --}}
 <table class="table">
-  <thead>
+  <thead class="table-light">
     <tr>
       <td>No</td>
       <td>Nis</td>
@@ -27,20 +27,12 @@
       <td>{{ $student->kelas->nama}}</td>
       <td>
         <a type="button" class="btn btn-primary" href="/students/detail/{{$student->id}}">Detail</a>
-        <a type="button" class="btn btn-warning" href="/students/edit/{{$student->id}}" >Edit</a>
+        {{-- <a type="button" class="btn btn-warning" href="/students/edit/{{$student->id}}" >Edit</a>
         <form action="/students/delete/{{$student->id}}" method="post" class="d-inline">
           @csrf
           @method('delete')
           <button class="btn btn-danger" onclick="return confirm('Anda yakin ingin menghapus data ini?')">Delete</button>
-        </form>
-        {{-- <button class="btn btn-danger" href="javascript:void(0);" onclick="konfirmasiHapus({{ $student->id }})">Delete</button>
-        <script>
-          function konfirmasiHapus(studentId) {
-              if (confirm('Anda yakin ingin menghapus data siswa ini?')) {
-                  window.location.href = '/students/delete/' + studentId;
-              }
-          }
-        </script> --}}
+        </form> --}}
       </td>
     </tr>
     @endforeach

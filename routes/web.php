@@ -1,11 +1,14 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Students;
 use App\Http\Controllers\StudentsController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -73,3 +76,4 @@ Route::post('/register/store', [RegisterController::class, 'store']);
 
 Route::delete('/logout', [LoginController::class, 'logout'])->name('logout');
 
+Route::get('/dashboard/all', [DashboardController::class, 'index'])->middleware(['auth']);

@@ -30,7 +30,7 @@
             Hi, {{ Auth::user()->name }}
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>
+            <li><a class="dropdown-item" href="/dashboard/all">Dashboard</a></li>
             <li>
                 <form action="{{ route('logout') }}" method="post">
                     @csrf
