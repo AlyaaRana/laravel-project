@@ -50,7 +50,7 @@ class StudentsController extends Controller
             'tanggal' => $request->tanggal,
         ]);
 
-        return redirect('/students/all')->with('success', 'Data produk berhasil diperbarui.');
+        return redirect('/dashboard/student')->with('success', 'Data produk berhasil diperbarui.');
         }
     }
     
@@ -61,9 +61,9 @@ class StudentsController extends Controller
         $student = Student::find($student);
         if ($student) {
         $student->delete();
-        return redirect('/students/all')->with('success', 'Data siswa berhasil dihapus.');
+        return redirect('/dashboard/student')->with('success', 'Data siswa berhasil dihapus.');
         } else {
-        return redirect('/students/all')->with('error', 'Siswa tidak ditemukan.');
+        return redirect('/dashboard/student')->with('error', 'Siswa tidak ditemukan.');
         }
     }
 
@@ -96,7 +96,7 @@ class StudentsController extends Controller
         $student->alamat = $validatedData['alamat'];
     
         $student->save();
-        return redirect('/students/all')->with('success', 'Data siswa berhasil ditambahkan.');
+        return redirect('/dashboard/student')->with('success', 'Data siswa berhasil ditambahkan.');
         // if ($result) {
         //     return redirect('/students/all')->with('success', 'Data siswa berhasil ditambahkan.');
         // }

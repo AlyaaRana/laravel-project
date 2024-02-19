@@ -77,3 +77,6 @@ Route::post('/register/store', [RegisterController::class, 'store']);
 Route::delete('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/dashboard/all', [DashboardController::class, 'index'])->middleware(['auth']);
+
+Route::get('/dashboard/student', [DashboardController::class, 'student']);
+Route::get('/dashboard/kelas', [DashboardController::class, 'kelas']);
