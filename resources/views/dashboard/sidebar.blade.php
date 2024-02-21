@@ -21,10 +21,9 @@
 
         <ul class="nav flex-column mb-auto">
           <li class="nav-item">
-            <form action="{{ route('logout') }}" method="post">
+            <form action="/logout" method="POST">
               @csrf
-              @method('DELETE')
-              <button class="nav-link d-flex align-items-center gap-2" href="#">
+              <button type="submit" class="nav-link d-flex align-items-center gap-2" href="#">
                 <svg class="bi"><use xlink:href="#door-closed"/></svg>
                 Sign out
               </button> 

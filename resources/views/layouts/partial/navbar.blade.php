@@ -32,9 +32,8 @@
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/dashboard/student">Dashboard</a></li>
             <li>
-                <form action="{{ route('logout') }}" method="post">
+                <form action="/logout" method="post">
                     @csrf
-                    @method('DELETE')
                     <button type="submit" class="dropdown-item">Logout</button>
                 </form>
             </li>

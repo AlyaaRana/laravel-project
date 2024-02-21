@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kelas;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use App\Models\Student;
 
@@ -91,7 +92,8 @@ class StudentsController extends Controller
         $student->alamat = $validatedData['alamat'];
     
         $student->save();
-        return redirect('/dashboard/student')->with('success', 'Data siswa berhasil ditambahkan.');
+        return Redirect::to('/dashboard/student')->with('success', 'Data siswa berhasil ditambahkan.');
+        // return redirect('/dashboard/student')->with('success', 'Data siswa berhasil ditambahkan.');
 
     }
 }

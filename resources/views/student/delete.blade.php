@@ -1,23 +1,27 @@
-@extends('dashboard.all')
+@extends('layouts.main')
 
-@section('content')
-<!DOCTYPE html>
-<html>
-<body>
-    <h1>Konfirmasi Penghapusan</h1>
-    <p>Anda yakin ingin menghapus data siswa ini?</p>
-    <button onclick="hapus()">Ya</button>
-    <button onclick="batal()">Tidak</button>
+@section('container')
+    <!DOCTYPE html>
+    <html>
+    <body>
+        <h1>Konfirmasi Penghapusan</h1>
+        <p>Anda yakin ingin menghapus data siswa ini?</p>
+        <button onclick="hapus()">Ya</button>
+        <button onclick="batal()">Tidak</button>
 
-    <script>
-        function hapus() {
-            window.location.href = '/students/delete{{$student->id}}';
-        }
+        <script>
+            function hapus() {
+                var confirmed = confirm('Anda yakin ingin menghapus data ini?');
 
-        function batal() {
-            window.location.href = '/dashboard/student';
-        }
-    </script>
-</body>
-</html>
+                if (confirmed) {
+                    window.location.href = '/dashboard/students/delete/{{$student->id}}';
+                }
+            }
+
+            function batal() {
+                window.location.href = '/dashboard/student';
+            }
+        </script>
+    </body>
+    </html>
 @endsection

@@ -10,34 +10,43 @@ use Illuminate\Validation\ValidationException;
 class LoginController extends Controller
 {
     public function index(){
-        // if(Auth::check()) return redirect()->route('');
 
         return view ('login.index', ["title" => "Login"]);
     }
 
     public function store(Request $request)
     {
-        $validateData = $request->validate([
-           "email" => "required|email",
-           "password" => "required",
+        // $validateData = $request->validate([
+        //    "email" => "required|email",
+        //    "password" => "required",
+        // ]);
+
+        $credentials = $request->validate([
+            'email' => 'required',
+            'password' => 'required'
         ]);
 
-        if (Auth::attempt($validateData)) {
-        session()->flash('success', 'Login Berhasil');
-        return redirect('/students/all');
-        } else {
-        throw ValidationException::withMessages([
-            'email' => ['Invalid email or password'],
-        ]);
-    }
+        if (auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('/dashboard/student');
+        }
+
+        return back()->with('loginError', 'Login Failed!');
+
+        
+    
     }
 
     public function logout(Request $request)
     {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect('/students/all')->with('success', 'Anda berhasil logout');
+        auth::logout();
+
+        request()->session()->invalidate();
+
+        request()->session()->regenerateToken();
+
+        return redirect('/login/index')->with('success', 'Anda berhasil logout');
     }
 
 }

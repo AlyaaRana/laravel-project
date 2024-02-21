@@ -1,6 +1,6 @@
-@extends('dashboard.all')
+@extends('layouts.main')
 
-@section('content')
+@section('container')
 <h1>Edit Data Siswa</h1>
 <a href="/dashboard/student">Kembali</a>
 

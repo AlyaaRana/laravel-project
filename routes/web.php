@@ -69,14 +69,33 @@ Route::delete('/kelas/delete/{kelas}', [KelasController::class, 'destroy']);
 Route::get('/kelas/create', [KelasController::class, 'create']);
 Route::post('/kelas/store', [KelasController::class, 'store']);
 
-Route::get('/login/index', [LoginController::class, 'index']);
+Route::get('/login/index', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login/store', [LoginController::class, 'store']);
-Route::delete('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get('/register/index', [RegisterController::class, 'index']);
+// Route::group(["prefix" => "/login"], function(){
+//     Route::get('index', [LoginController::class, 'index'])->name('login')->middleware('guest');
+//     Route::post('store', [LoginController::class, 'store']);
+// });
+// Route::post('/logout', [LoginController::class, 'logout']);
+
+// Route::group(["prefix" => "/register"], function(){
+//     Route::get('index', [RegisterController::class, 'index'])->middleware('guest');
+//     Route::post('store', [RegisterController::class, 'store']);
+// });
+
+Route::get('/register/index', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register/store', [RegisterController::class, 'store']);
 
-Route::get('/dashboard/all', [DashboardController::class, 'index'])->middleware(['auth']);
-Route::get('/dashboard/student', [DashboardController::class, 'student']);
-Route::get('/dashboard/kelas', [DashboardController::class, 'kelas']);
+Route::group(["prefix" => "/dashboard"], function(){
+  Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth']);
+  Route::get('/student', [DashboardController::class, 'student'])->middleware(['auth']);
+  Route::get('/kelas', [DashboardController::class, 'kelas'])->middleware(['auth']);
+//   Route::get('/student/create', [DashboardController::class, 'create']);
+//   Route::post('/student/add', [DashboardController::class, 'store']);
+//   Route::delete('/kelas/delete/{kelas}', [DashboardController::class, 'destroy']);
+//   Route::delete('/student/delete/{student}', [DashboardController::class, 'destroy']);
+//   Route::post('/student/store/{student}', [DashboardController::class, 'store']);
+});
+
 

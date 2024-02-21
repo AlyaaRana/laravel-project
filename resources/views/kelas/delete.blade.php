@@ -1,6 +1,6 @@
-@extends('dashboard.all')
+@extends('layouts.main')
 
-@section('content')
+@section('container')
 <!DOCTYPE html>
 <html>
 <head>

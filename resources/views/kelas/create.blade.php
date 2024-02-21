@@ -1,6 +1,6 @@
-@extends('dashboard.all')
+@extends('layouts.main')
 
-@section('content')
+@section('container')
     <h1>Add Student</h1>
     <form action="/kelas/store" method="post">
         @csrf
