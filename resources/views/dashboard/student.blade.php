@@ -35,7 +35,13 @@
     <tr data-kelas="{{ $student->kelas_id }}">
       <td>{{ $student->nis}}</td>
       <td>{{ $student->nama }}</td>
-      <td>{{ $student->kelas->nama}}</td>
+      <td>
+        @if ($student->kelas)
+          {{ $student->kelas->nama }}
+        @else
+          No Class Assigned
+        @endif
+      </td>
       <td>
         {{-- <a type="button" class="btn btn-warning" href="/students/edit/{{$student->id}}" >Edit</a> --}}
         <a href="/students/{{ $student->id }}/edit" class="btn btn-warning" role="button">Edit</a>

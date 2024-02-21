@@ -52,6 +52,23 @@ class StudentsController extends Controller
         ]);
     }
 
+    public function update(Request $request, $student)
+    {
+        $student = Student::find($student);
+
+        if ($student) {
+        $student->update([
+            'nis' => $request->nis,
+            'nama' => $request->nama,
+            'kelas_id' => $request->kelas_id,
+            'alamat' => $request->alamat,
+            'tanggal' => $request->tanggal,
+        ]);
+
+        return redirect('/dashboard/student')->with('success', 'Data produk berhasil diperbarui.');
+        }
+    }
+
     public function store(Request $request)
     {
         $validatedData = $request->validate([
