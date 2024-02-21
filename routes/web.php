@@ -54,13 +54,13 @@ Route::group(["prefix" => "/kelas"], function(){
 });
 
 Route::group(["prefix" => "/students"], function(){
-  Route::get('/students/all', [StudentsController::class, 'index']);
-  Route::get('/students/detail/{student}',[StudentsController::class, 'show']);
-  Route::get('/students/edit/{student}',[StudentsController::class, 'edit']);
-  Route::put('/students/update/{student}', [StudentsController::class, 'update']);
-  Route::delete('/students/delete/{student}', [StudentsController::class, 'destroy']);
-  Route::get('/students/create', [StudentsController::class, 'create']);
-  Route::post('/students/store', [StudentsController::class, 'store']);
+  Route::get('/all', [StudentsController::class, 'index']);
+  Route::get('/detail/{student}',[StudentsController::class, 'show']);
+  Route::get('/{student}/edit',[StudentsController::class, 'edit']);
+  Route::put('/update/{student}', [StudentsController::class, 'update']);
+  Route::delete('/delete/{student}', [StudentsController::class, 'destroy']);
+  Route::get('/create', [StudentsController::class, 'create']);
+  Route::post('/store', [StudentsController::class, 'store']);
 });
 
 

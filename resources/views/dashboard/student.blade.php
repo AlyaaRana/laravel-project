@@ -6,7 +6,7 @@
   {{ session('success') }}
 </div>
 @endif
-<div class="d-flex justify-content-between align-items-center">
+<div class="d-flex justify-content-between align-items-center mt-5">
   <h4 class="mt-4">Student</h4>
   <div class="mb-3">
     <label for="kelas" class="form-label">Filter by Class:</label>
@@ -30,14 +30,15 @@
       <td>Action</td>
     </tr>
   </thead>
-  <tbody class="table-group-divider" id="students-table-body">
+  <tbody class="table-group-divider" id="students-table-body" >
     @foreach ($students as $key => $student)
     <tr data-kelas="{{ $student->kelas_id }}">
       <td>{{ $student->nis}}</td>
       <td>{{ $student->nama }}</td>
       <td>{{ $student->kelas->nama}}</td>
       <td>
-        <a type="button" class="btn btn-warning" href="/students/edit/{{$student->id}}" >Edit</a>
+        {{-- <a type="button" class="btn btn-warning" href="/students/edit/{{$student->id}}" >Edit</a> --}}
+        <a href="/students/{{ $student->id }}/edit" class="btn btn-warning" role="button">Edit</a>
         <form action="/students/delete/{{$student->id}}" method="post" class="d-inline">
           @csrf
           @method('delete')
