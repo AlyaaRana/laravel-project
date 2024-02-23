@@ -11,9 +11,10 @@ class StudentsController extends Controller
 {
     public function index()
     {
+        $students = Student::with('kelas')->paginate(5);
         return view('student.all', [
             "title" => "student_page",
-            "students" => Student::all()
+            "students" => $students,
         ]);
     }
 
@@ -50,6 +51,23 @@ class StudentsController extends Controller
             'student' => new Student(),
             'kelas' => Kelas::all()
         ]);
+    }
+
+    public function update(Request $request, $student)
+    {
+        $student = Student::find($student);
+
+        if ($student) {
+        $student->update([
+            'nis' => $request->nis,
+            'nama' => $request->nama,
+            'kelas_id' => $request->kelas_id,
+            'alamat' => $request->alamat,
+            'tanggal' => $request->tanggal,
+        ]);
+
+        return redirect('/dashboard/student')->with('success', 'Data produk berhasil diperbarui.');
+        }
     }
 
     public function store(Request $request)

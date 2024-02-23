@@ -35,9 +35,15 @@
     <tr data-kelas="{{ $student->kelas_id }}">
       <td>{{ $student->nis}}</td>
       <td>{{ $student->nama }}</td>
-      <td>{{ $student->kelas->nama}}</td>
       <td>
-        {{-- <a type="button" class="btn btn-warning" href="/students/edit/{{$student->id}}" >Edit</a> --}}
+        @if ($student->kelas)
+          {{ $student->kelas->nama }}
+        @else
+          No Class Assigned
+        @endif
+      </td>
+      <td>
+        <a type="button" class="btn btn-primary" href="/students/detail/{{$student->id}}">Detail</a>
         <a href="/students/{{ $student->id }}/edit" class="btn btn-warning" role="button">Edit</a>
         <form action="/students/delete/{{$student->id}}" method="post" class="d-inline">
           @csrf

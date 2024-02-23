@@ -19,7 +19,7 @@
       <td>{{ $key + 1 }}</td>
       <td>{{ $student->nis}}</td>
       <td>{{ $student->nama }}</td>
-      <td>{{ $student->kelas->nama}}</td>
+      <td>{{ optional($student->kelas)->nama }}</td>
       <td>
         <a type="button" class="btn btn-primary" href="/students/detail/{{$student->id}}">Detail</a>
       </td>
@@ -27,4 +27,7 @@
     @endforeach
   </tbody>
 </table>
+<div>
+  {{ $students->links('pagination::bootstrap-5') }}
+</div>
 @endsection

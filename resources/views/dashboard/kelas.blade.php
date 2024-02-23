@@ -1,6 +1,11 @@
 @extends('dashboard.all')
 
 @section('content')
+@if (session()->has('success'))
+<div class="alert alert-success" role="alert">
+  {{ session('success') }}
+</div>
+@endif
 <h4 class="mt-4">Kelas</h4>
 <a href="/kelas/create" class="btn btn-success mb-3">Add Kelas</a>
 <table class="table">

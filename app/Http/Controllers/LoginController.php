@@ -29,12 +29,10 @@ class LoginController extends Controller
         if (auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/dashboard/student');
+            return redirect()->intended('/students/all');
         }
 
         return back()->with('loginError', 'Login Failed!');
-
-        
     
     }
 

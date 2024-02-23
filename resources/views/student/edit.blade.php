@@ -4,7 +4,7 @@
     <h1>Edit Data Siswa</h1>
     <a href="/dashboard/student">Kembali</a>
 
-    <form action="/students/{{ $student->id }}" method="POST" id="edit-form">
+    <form action="{{ route('students.update', $student) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="form-group">
