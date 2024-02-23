@@ -11,9 +11,10 @@ class StudentsController extends Controller
 {
     public function index()
     {
+        $students = Student::with('kelas')->paginate(5);
         return view('student.all', [
             "title" => "student_page",
-            "students" => Student::all()
+            "students" => $students,
         ]);
     }
 

@@ -43,7 +43,7 @@
         @endif
       </td>
       <td>
-        {{-- <a type="button" class="btn btn-warning" href="/students/edit/{{$student->id}}" >Edit</a> --}}
+        <a type="button" class="btn btn-primary" href="/students/detail/{{$student->id}}">Detail</a>
         <a href="/students/{{ $student->id }}/edit" class="btn btn-warning" role="button">Edit</a>
         <form action="/students/delete/{{$student->id}}" method="post" class="d-inline">
           @csrf

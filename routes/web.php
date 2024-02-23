@@ -53,15 +53,6 @@ Route::group(["prefix" => "/kelas"], function(){
   Route::post('/store', [KelasController::class, 'store']);
 });
 
-// Route::group(["prefix" => "/students"], function(){
-//   Route::get('/all', [StudentsController::class, 'index']);
-//   Route::get('/detail/{student}',[StudentsController::class, 'show']);
-//   Route::get('/{student}/edit',[StudentsController::class, 'edit']);
-//   Route::put('/update/{student}', [StudentsController::class, 'update']);
-//   Route::delete('/delete/{student}', [StudentsController::class, 'destroy']);
-//   Route::get('/create', [StudentsController::class, 'create']);
-//   Route::post('/students/store', [StudentsController::class, 'store']);
-// });
 
 Route::group(["prefix" => "/students"], function(){
   Route::get('/all', [StudentsController::class, 'index']);
@@ -73,7 +64,6 @@ Route::group(["prefix" => "/students"], function(){
   Route::post('/store', [StudentsController::class, 'store']);
 });
   
-
 
 Route::get('/login/index', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login/store', [LoginController::class, 'store']);
